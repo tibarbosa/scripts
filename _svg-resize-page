@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#NOTE: File name cannot contain spaces!
+# Input parameters: 
+#    - file_name --> Resize svg page
+
+if [ "$#" -lt 1 ]; then
+  echo "Insert file name!" >&2
+  exit 1
+else
+    for my_arg in "$@"
+    do
+      filename="$my_arg"
+
+      echo "Resizing page of $my_arg..."
+      inkscape --export-type="svg" --export-area-drawing  -o $filename $filename
+    done
+    exit 0
+fi

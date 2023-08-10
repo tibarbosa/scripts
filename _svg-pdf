@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#NOTE: File name cannot contain spaces!
+# Input parameters: 
+#    - file_name --> .svg to convert to PDF
+
+if [ "$#" -lt 1 ]; then
+  echo "Insert file name!" >&2
+  exit 1
+else
+    for my_arg in "$@"
+    do
+      filename="$my_arg"
+      outputfilename=$(echo "$my_arg" | cut -f 1 -d '.')
+
+      echo "Converting $my_arg..."
+      inkscape --export-pdf-version="1.5" --export-filename=$outputfilename.pdf $filename
+    done
+fi
+
+exit 0

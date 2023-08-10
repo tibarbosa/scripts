@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Removing kicad unecessary files..."
+
+rm -rfv *.sch-bak
+rm -rfv *.kicad_pcb-bak
+rm -rfv *.sch-bak
+rm -rfv *.lib
+rm -rfv fp-info-cache
+rm -rfv *.bak
+rm -rfv *-backups/
+rm -rfv sym-lib-table

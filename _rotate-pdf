@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#NOTE: File name cannot contain spaces!
+# Input parameters: 
+#    - file name --> file to rotate
+#    - rotation --> 90 180 360
+
+if [ "$#" -lt 2 ]; then
+  echo "Insert file name and rotation!" >&2
+  exit 1
+else
+    qpdf --rotate="$2" "$1" --replace-input
+fi
+
+exit 0

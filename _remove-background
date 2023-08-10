@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#NOTE: File name cannot contain spaces!
+# Input parameters: 
+#    - file_name --> image file to convert to PDF
+
+if [ "$#" -lt 1 ]; then
+  echo "Insert file name!" >&2
+  exit 1
+else
+    for my_arg in "$@"
+    do
+      filename="$my_arg"
+      outputfilename=$(echo "$my_arg" | cut -f 1 -d '.')
+
+      echo "Removing background from $my_arg..."
+      convert $filename -fill none -fuzz 1% -draw 'matte 0,0 floodfill' -flop  -draw 'matte 0,0 floodfill' -flop $outputfilename.png
+    done
+fi
+
+exit 0

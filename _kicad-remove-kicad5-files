@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Removing kicad unecessary files..."
+
+rm -rfv *.sch
+rm -rfv *.net
+rm -rfv *.pro

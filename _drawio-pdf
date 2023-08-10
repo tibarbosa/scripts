@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#NOTE: File name cannot contain spaces!
+# Input parameters: 
+#    - file_name --> .drawio to convert to PDF
+
+if [ "$#" -lt 1 ]; then
+  echo "Insert file name!" >&2
+  exit 1
+else
+    for my_arg in "$@"
+    do
+      filename="$my_arg"
+      outputfilename=$(echo "$my_arg" | cut -f 1 -d '.')
+
+      echo "Converting $my_arg..."
+      drawio -x -f pdf -o $outputfilename.pdf $filename
+    done
+fi
+
+exit 0

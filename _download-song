@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Input parameters: 
+#    - "Artist - Music Name" --> Music you want to download
+
+if [ "$#" -ne 1 ]; then
+  echo "Wrong number of parameters" >&2
+  exit 1
+else
+  ## With python package installed
+  ##python3 -W ignore -m spotdl "$1" --output '{artist}/{album}/{artist} - {title}'
+  ## With python package installed as standalone module
+  spotdl "$1" --output '{artist}/{album}/{artist} - {title}'
+fi
+
+exit 0
