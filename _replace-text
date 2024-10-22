@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Replace '$1' with '2' in all files within the current directory
+
+if [[ $# -ne 2 ]]; then
+  echo "Usage: $0 'old_string' 'new_string'"
+  exit 1
+fi
+
+old_string="$1"
+new_string="$2"
+
+for file in ./*; do
+  if [[ -f "$file" ]]; then
+    sed -i "s@${old_string}@${new_string}@g" "$file"
+    echo "Replaced $old_string with $new_string in $file"
+  fi
+done
+
+exit 0
